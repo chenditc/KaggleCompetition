@@ -55,3 +55,7 @@ The prediction model improve the accuracy to **62%**, which is the best score I 
 original site: https://www.kaggle.com/c/icdm-2015-drawbridge-cross-device-connections/forums/t/16122/1st-place-solution-summary
 
 #####Paper: <to be collected> 
+
+#####Gotchas:
+1. When building feature vectors, check if the sample are equivalent between each other. In this competition, each sample is a "relation". And what are trying to predict is the "relative" significance compare to other sample. Thus, a normalization among all interested sample will help. Otherwise, the feature vector does not capture the "rank" information. The normalization is not the best way to do it, since we are interested in the most significant one, the top2 might be really close to each other. A simple ranking number might be better (not tested).
+2. Solr is good at generic search, but does not have traing feature, the xgboost's "rank:pairwise" seems to be useful in this case.
