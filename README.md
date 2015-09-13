@@ -33,7 +33,7 @@ Since picking one cookie id from 1 million cookies will take too much time if we
 ```
 ip_123 ip_125 ip_127 ip_190 
 ```
-Due to the internal implementation of solr and lucene, the default search already provide me tf-idf weighting and property ranking method. Just use the first cookie id from the search result, I get a accuracy of *42%*.
+Due to the internal implementation of solr and lucene, the default search already provide me tf-idf weighting and property ranking method. Just use the first cookie id from the search result, I get a accuracy of **42%**.
 
 I also tried to put property and basic info into the query, but they don't provide too much improvement.
 
@@ -45,6 +45,6 @@ To make the feature more robust, I normalize all the feature vector by x = (x - 
 ######Step 4.
 Use the feature vector created in 3, build binary prediction model. Note that the class is highly skewed, 1:499. We will need to adjust the weight of each class to make sure the model does not predict 0 all the time. To do this, there is a class_weight parameter we can set in sklearn, in pylearn2, I duplicate the positive dataset to make them stay in similar size.
 
-The prediction model improve the accuracy to *62%*, which is the best score I got in this competition. The different model does not matter that much, the basic linear model and multilayer perceptron gives me similar performance.
+The prediction model improve the accuracy to **62%**, which is the best score I got in this competition. The different model does not matter that much, the basic linear model and multilayer perceptron gives me similar performance.
 
 
