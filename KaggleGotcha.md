@@ -41,3 +41,9 @@ Kaggle提供了一个很棒的Leaderboard功能，就是当你提交一个答案
 这个功能虽然很棒，但是许多人将其作为评价自己算法的标准，我认为这是非常不妥的。如果一个参赛者用leaderboard作为评价自己算法的标准，这就相当于用作validation data set，并用来调整参数。这样就会使算法overfit test data的一部分。在最终评价的时候，加入了另一部分test data的准确率，有可能分数会降低许多。
 
 我认为交叉验证 (Cross Valdiataion) 是一个比较合适的替代方法。在实际工业界的工作中，也不会有leaderboard这样的东西来评价算法，交叉验证就是将traning data分成N份，每次用N-1份用于训练，用剩下的一份来测试准确率，这样就不会overfit某一部分特定的数据了。
+
+### 最常用的模型
+在Kaggle的比赛里，没有一个模型是适用于所有比赛的，但是有一些模型在大部分的情况下表现都非常好。
+1. Boosted Decision Tree，以 https://github.com/dmlc/xgboost 为代表，大部分比赛里都可以作为不错的baseline使用。
+2. Deep neural network。由于neural network本身就有特征提取的效果，在一些比赛中，能为最后的model ensemble提供一个供选择的模型。由于training的时间跟neural network的大小，还有数据量的大小都有关，如果没有GPU支持的话，很多都需要training很久的时间。
+3. Random Forest Tree. 跟Boosted Decision Tree类似，属于跑得快，效果好，还能有feature selection功能的模型。也是个不错的baseline。
